@@ -8,14 +8,14 @@ Funcionalidade: Aprender Cucumber
   Cenário: Deve executar especificação
     Dado que criei o arquivo corretamente
     Quando executa-lo
-    Então a especificação deve finalizar com sucesso
+    Então a especificacao deve finalizar com sucesso
 
-  Cenário: Deve incremetar o contador
-    Dado que o valor do contador é 15
+  Cenário: Deve incrementar o contador
+    Dado que o valor do contador e 15
     Quando eu incrementar em 3
-    Então o valor do contador será 18
+    Então o valor do contador sera 18
 
-  Cenário: Deve incremetar o contador
-    Dado que o valor do contador é 123
+  Cenário: Deve incrementar o contador
+    Dado que o valor do contador e 123
     Quando eu incrementar em 33
-    Então o valor do contador será 156
+    Então o valor do contador sera 156
