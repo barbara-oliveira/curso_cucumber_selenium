@@ -1,5 +1,6 @@
 package com.study.bdd.cucumber.steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -79,5 +80,10 @@ public class InserirContaSteps {
     public void souNotificadoQueJáExisteUmaContaComEsseNome() {
         String mensagemErro = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
         Assert.assertEquals(ERRO_CONTA_JA_CADASTRADA, mensagemErro);
+    }
+
+    @After
+    public void fecharBrowser() {
+        driver.quit();
     }
 }
