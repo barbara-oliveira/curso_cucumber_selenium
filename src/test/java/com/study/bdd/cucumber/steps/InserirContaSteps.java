@@ -12,9 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class InserirContaSteps {
 
     private static final String MENSAGEM_SUCESSO_LOGIN = "Bem vindo, Bárbara Oliveira da Silva!";
-    private static final String CONTA_ADICIONADA_COM_SUCESSO = "Conta adicionada com sucesso!";
-    public static final String INFORME_O_NOME_DA_CONTA = "Informe o nome da conta";
-    public static final String ERRO_CONTA_JA_CADASTRADA = "Já existe uma conta com esse nome!";
     private WebDriver driver;
 
     @Dado("que estou acessando a aplicação")
@@ -64,22 +61,10 @@ public class InserirContaSteps {
         driver.findElement(By.tagName("button")).click();
     }
 
-    @Então("a conta é inserida com sucesso")
-    public void aContaÉInseridaComSucesso() {
-        String mensagemSucesso = driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
-        Assert.assertEquals(CONTA_ADICIONADA_COM_SUCESSO, mensagemSucesso);
-    }
-
-    @Então("sou notificado que o nome da conta é obrigatório")
-    public void souNotificadoQueONomeDaContaÉObrigatório() {
-        String mensagemErro = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
-        Assert.assertEquals(INFORME_O_NOME_DA_CONTA, mensagemErro);
-    }
-
-    @Então("sou notificado que já existe uma conta com esse nome")
-    public void souNotificadoQueJáExisteUmaContaComEsseNome() {
-        String mensagemErro = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
-        Assert.assertEquals(ERRO_CONTA_JA_CADASTRADA, mensagemErro);
+    @Então("recebo a mensagem {string}")
+    public void receboAMensagem(String string) {
+        String mensagem = driver.findElement(By.xpath("//div[starts-with(@class,'alert alert-')]")).getText();
+        Assert.assertEquals(string, mensagem);
     }
 
     @After
