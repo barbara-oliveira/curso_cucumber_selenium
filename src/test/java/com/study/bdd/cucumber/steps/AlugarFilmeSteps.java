@@ -4,6 +4,7 @@ import com.study.bdd.entity.Filme;
 import com.study.bdd.entity.NotaDeAluguel;
 import com.study.bdd.services.AluguelService;
 import com.study.bdd.utils.DateUtil;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Então;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 public class AlugarFilmeSteps {
 
@@ -33,6 +35,14 @@ public class AlugarFilmeSteps {
     @Dado("que o preco do aluguel seja R$ {int}")
     public void queOPrecoDoAluguelSejaR$(Integer int1) {
         filme.setAluguel(int1);
+    }
+
+    @Dado("um filme")
+    public void umFilme(DataTable dataTable) {
+        Map<String, String> map = dataTable.asMap(String.class, String.class);
+        filme = new Filme();
+        filme.setEstoque(Integer.parseInt(map.get("estoque")));
+        filme.setAluguel(Integer.parseInt(map.get("preco")));
     }
 
     @Quando("alugar")

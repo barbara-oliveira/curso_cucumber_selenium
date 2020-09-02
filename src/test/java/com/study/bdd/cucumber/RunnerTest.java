@@ -8,8 +8,8 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/features/alugar_filme.feature",
-        plugin = "pretty",
+        features = "src/test/features/inserir_conta.feature",
+        plugin = {"pretty", "html:target/report.html"},
         monochrome = false,
         snippets = CAMELCASE,
         tags = "not @ignore"
