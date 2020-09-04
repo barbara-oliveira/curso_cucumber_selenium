@@ -18,53 +18,23 @@ import java.io.IOException;
 
 public class InserirContaSteps {
 
-    private static final String MENSAGEM_SUCESSO_LOGIN = "Bem vindo, Bárbara Oliveira da Silva!";
     private WebDriver driver;
 
-    @Dado("que estou acessando a aplicação")
-    public void queEstouAcessandoAAplicação() {
+    @Dado("que desejo adicionar uma conta")
+    public void que_desejo_adicionar_uma_conta() {
         System.setProperty("webdriver.chrome.driver", "/home/barbara/Downloads/drivers/chromedriver");
         driver = new ChromeDriver();
         driver.get("http://srbarriga.herokuapp.com/");
-    }
-
-    @Quando("informo o usuário {word}")
-    public void informoOUsuárioBarbaraOliveiraSilvaTesteCom(String usuario) {
-        driver.findElement(By.id("email")).sendKeys(usuario);
-    }
-
-    @Quando("a senha {word}")
-    public void aSenhaSenha123(String senha) {
-        driver.findElement(By.name("senha")).sendKeys(senha);
-    }
-
-    @Quando("seleciono entrar")
-    public void selecionoEntrar() {
+        driver.findElement(By.id("email")).sendKeys("barbara-oliveira-silva-19@teste.com");
+        driver.findElement(By.name("senha")).sendKeys("senha123");
         driver.findElement(By.tagName("button")).click();
-    }
-
-    @Então("visualizo a página inicial")
-    public void visualizoAPáginaInicial() {
-        String mensagemSucesso = driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
-        Assert.assertEquals(MENSAGEM_SUCESSO_LOGIN,mensagemSucesso);
-    }
-    @Quando("seleciono Contas")
-    public void selecionoContas() {
         driver.findElement(By.linkText("Contas")).click();
-    }
-
-    @Quando("seleciono Adicionar")
-    public void selecionoAdicionar() {
         driver.findElement(By.linkText("Adicionar")).click();
     }
 
-    @Quando("informo a conta {string}")
-    public void informoAConta(String string) {
+    @Quando("adiciono a conta {string}")
+    public void adiciono_a_conta(String string) {
         driver.findElement(By.id("nome")).sendKeys(string);
-    }
-
-    @Quando("seleciono Salvar")
-    public void selecionoSalvar() {
         driver.findElement(By.tagName("button")).click();
     }
 
